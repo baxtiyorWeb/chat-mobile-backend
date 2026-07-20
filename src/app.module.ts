@@ -12,9 +12,9 @@ import { Message } from './chat/entities/message.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: 'dev.db',
+      database: process.env.DATABASE_PATH || 'dev.db',
       entities: [User, Message],
-      synchronize: true,
+      synchronize: process.env.TYPEORM_SYNC ? process.env.TYPEORM_SYNC === 'true' : true,
     }),
     AuthModule,
     UsersModule,

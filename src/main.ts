@@ -17,9 +17,10 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000, '0.0.0.0');
+  const port = process.env.PORT || 3000;
+  await app.listen(port, '0.0.0.0');
 
-  console.log(`Server: http://192.168.42.239:3000`);
+  console.log(`Server running on port ${port}`);
 }
 bootstrap();
 
